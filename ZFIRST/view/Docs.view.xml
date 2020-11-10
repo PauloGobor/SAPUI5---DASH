@@ -1,0 +1,72 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="Docs.ZZZDocs.controller.Docs">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+				    <Table noDataText="Drop column list items here and columns in the area above" id="table0" items="{path:'/EkpoSet'}">
+				        <items>
+				            <ColumnListItem type="Active" id="item0" press="funcListItemPress">
+				                <cells>
+				                    <Text text="{Ebeln}" id="text2"/>
+				                    <Text text="{Ebelp}" id="text3"/>
+				                    <Text text="{Bukrs}" id="text4"/>
+				                    <Text xmlns="sap.m" text="{Werks}" id="text7"/>
+				                    <Text xmlns="sap.m" text="{Lifnr}" id="text8"/>
+				                    <Text xmlns="sap.m" text="{Name1}" id="text9"/>
+				                    <Text xmlns="sap.m" text="{Matnr}" id="text10"/>
+				                    <Text xmlns="sap.m" text="{Txz01}" id="text11"/>
+				                    <Text xmlns="sap.m" text="{Meins}" id="text12"/>
+				                </cells>
+				            </ColumnListItem>
+				        </items>
+				        <columns>
+				            <Column id="column0">
+				                <header>
+				                    <Label text="Doc. Compras" id="label0"/>
+				                </header>
+				            </Column>
+				            <Column id="column1">
+				                <header>
+				                    <Label text="Item" id="label1"/>
+				                </header>
+				            </Column>
+				            <Column id="column2">
+				                <header>
+				                    <Label text="Empresa" id="label2"/>
+				                </header>
+				            </Column>
+				            <Column id="column0_1598561064957">
+				                <header>
+				                    <Text text="Centro" id="text1"/>
+				                </header>
+				            </Column>
+				            <Column id="column1_1598561164184">
+				                <header>
+				                    <Text text="Cod. Fornecedor" id="text2_1598561164184"/>
+				                </header>
+				            </Column>
+				            <Column id="column2_1598561207548">
+				                <header>
+				                    <Text text="Fornecedor" id="text3_1598561207548"/>
+				                </header>
+				            </Column>
+				            <Column id="column3">
+				                <header>
+				                    <Text text="Cod. Material" id="text4_1598561263465"/>
+				                </header>
+				            </Column>
+				            <Column id="column4">
+				                <header>
+				                    <Text text="Descrição" id="text5"/>
+				                </header>
+				            </Column>
+				            <Column id="column5">
+				                <header>
+				                    <Text text="UM pedido" id="text6"/>
+				                </header>
+				            </Column></columns></Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,38 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZTX_DOCS_DEMO_SRV_01" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="Ekpo" sap:content-version="1">
+				<Key><PropertyRef Name="Matnr"/><PropertyRef Name="Ebeln"/></Key><Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material"/><Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.compras"/><Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cliente" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornecedor" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Nome" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Txz01" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Texto breve" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM pedido" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><NavigationProperty Name="DetailsMatNav" Relationship="ZTX_DOCS_DEMO_SRV_01.DetailsMat" FromRole="FromRole_DetailsMat"
+					ToRole="ToRole_DetailsMat"/></EntityType>
+			<EntityType Name="Mara" sap:content-version="1">
+				<Key><PropertyRef Name="Matnr"/><PropertyRef Name="Ebeln"/></Key><Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material"/><Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.compras"/><Property Name="Ersda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Criado em" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Mtart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Tipo material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="GrpMercads." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Brgew" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="Gewei" sap:label="Peso Total"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Ntgew" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="Gewei" sap:label="Peso líquido"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Gewei" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unidade de peso" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Volum" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="Voleh" sap:label="Volume"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Voleh" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unidade volume" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/></EntityType>
+			<Association Name="DetailsMat" sap:content-version="1"><End Type="ZTX_DOCS_DEMO_SRV_01.Ekpo" Multiplicity="1" Role="FromRole_DetailsMat"/><End Type="ZTX_DOCS_DEMO_SRV_01.Mara" Multiplicity="0..1" Role="ToRole_DetailsMat"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_DetailsMat"><PropertyRef Name="Ebeln"/><PropertyRef Name="Matnr"/></Principal>
+					<Dependent Role="ToRole_DetailsMat"><PropertyRef Name="Ebeln"/><PropertyRef Name="Matnr"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZTX_DOCS_DEMO_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="MaraSet" EntityType="ZTX_DOCS_DEMO_SRV_01.Mara" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="EkpoSet" EntityType="ZTX_DOCS_DEMO_SRV_01.Ekpo" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="DetailsMatSet" Association="ZTX_DOCS_DEMO_SRV_01.DetailsMat" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="EkpoSet" Role="FromRole_DetailsMat"/><End EntitySet="MaraSet" Role="ToRole_DetailsMat"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZTX_DOCS_DEMO_SRV_01/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZTX_DOCS_DEMO_SRV_01/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

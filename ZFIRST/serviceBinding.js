@@ -1,0 +1,1 @@
+function initModel(){var a="/sap/opu/odata/sap/ZTX_DOCS_DEMO_SRV_01/";var e=new sap.ui.model.odata.ODataModel(a,true);sap.ui.getCore().setModel(e)}

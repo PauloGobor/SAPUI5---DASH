@@ -1,0 +1,25 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZTX_SLFIGHT_DASH_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="sflight" sap:content-version="1">
+				<Key><PropertyRef Name="Carrid"/><PropertyRef Name="Connid"/></Key><Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Companhia aérea" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Nº vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unit="Currency" sap:label="Preço vôo"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moeda comp.aérea" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="Planetype" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Tipo avião" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Seatsmax" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máxima cl.econ." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Seatsocc" Type="Edm.Int32" Nullable="false" sap:label="Ocup.cl.econ." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsmaxB" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máx.cl.execut." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsoccB" Type="Edm.Int32" Nullable="false" sap:label="Ocup.cl.execut." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsmaxF" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máx.1ª classe" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsoccF" Type="Edm.Int32" Nullable="false" sap:label="Ocup.1ª classe" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Economica" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ECONOMICA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Executiva" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="EXECUTIVA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Primeira" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="PRIMEIRA" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZTX_SLFIGHT_DASH_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="sflightSet" EntityType="ZTX_SLFIGHT_DASH_SRV.sflight" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZTX_SLFIGHT_DASH_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZTX_SLFIGHT_DASH_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

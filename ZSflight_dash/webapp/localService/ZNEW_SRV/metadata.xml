@@ -1,0 +1,39 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZNEW_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="sflight" sap:content-version="1">
+				<Key><PropertyRef Name="Flightcode"/><PropertyRef Name="Flightdate"/></Key><Property Name="Flightcode" Type="Edm.String" Nullable="false" MaxLength="8"/><Property Name="Flightdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date"/><Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unit="Currency" sap:label="Airfare"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Airline Currency" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="Planetype" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Plane Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="HeadToDetailsNav" Relationship="ZNEW_SRV.HeadToDetails" FromRole="FromRole_HeadToDetails"
+					ToRole="ToRole_HeadToDetails"/></EntityType>
+			<EntityType Name="sflight_chart" sap:content-version="1">
+				<Key><PropertyRef Name="Flightcode"/><PropertyRef Name="Flightdate"/></Key><Property Name="Flightcode" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Flightdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Maximumcapacity" Type="Edm.Int32" Nullable="false" sap:label="Max. capacity econ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Economyoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied econ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Businessoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied bus." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Firstoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied 1st" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="sflight_chart2" sap:content-version="1">
+				<Key><PropertyRef Name="Flightcode"/><PropertyRef Name="Flightdate"/></Key><Property Name="Flightcode" Type="Edm.String" Nullable="false" MaxLength="8"/><Property Name="Flightdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Date"/><Property Name="Maximumcapacity" Type="Edm.Int32" Nullable="false" sap:label="Max. capacity econ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Economyoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied econ." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Businessoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied bus." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Firstoccupiedseats" Type="Edm.Int32" Nullable="false" sap:label="Occupied 1st" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="HeadToDetails" sap:content-version="1"><End Type="ZNEW_SRV.sflight" Multiplicity="1" Role="FromRole_HeadToDetails"/><End Type="ZNEW_SRV.sflight_chart" Multiplicity="0..1" Role="ToRole_HeadToDetails"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_HeadToDetails"><PropertyRef Name="Flightdate"/><PropertyRef Name="Flightcode"/></Principal>
+					<Dependent Role="ToRole_HeadToDetails"><PropertyRef Name="Flightdate"/><PropertyRef Name="Flightcode"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZNEW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="sflight_chartSet" EntityType="ZNEW_SRV.sflight_chart" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:pageable="false" sap:content-version="1"/><EntitySet Name="sflight_chart2Set" EntityType="ZNEW_SRV.sflight_chart2" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:pageable="false" sap:content-version="1"/><EntitySet Name="sflightSet" EntityType="ZNEW_SRV.sflight" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="HeadToDetailsSet" Association="ZNEW_SRV.HeadToDetails" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="sflightSet" Role="FromRole_HeadToDetails"/><End EntitySet="sflight_chartSet" Role="ToRole_HeadToDetails"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZNEW_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZNEW_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
