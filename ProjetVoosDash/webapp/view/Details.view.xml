@@ -1,0 +1,56 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="DashVoos.ProjetVoosDash.controller.Details" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:sl="sap.ui.comp.navpopover"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:suite="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<App>
+		<pages>
+			<Page title="Voo {Flightcode}" showFooter="true" enableScrolling="false" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<ObjectHeader xmlns="sap.m" title="Tipo de Avião: {Planetype}" number="{Price}" numberUnit="{Currency}" id="header0">
+						<statuses>
+							<ObjectStatus text="Success" state="Success" id="status0"/>
+						</statuses>
+						<attributes>
+							<ObjectAttribute text=" Data do voo: { path: 'Flightdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy' } }"
+								id="attribute0"/><!--<Text text="{ path: '/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' } }"/>--></attributes>
+					</ObjectHeader>
+					<suite:ChartContainer  id="idChartContainer" showFullScreen="true" showPersonalization="false"
+						autoAdjustHeight="false" showLegend="true">
+						<suite:toolbar>
+							<OverflowToolbar id="appToolbar">
+								<suite:ChartContainerToolbarPlaceholder/>
+							</OverflowToolbar>
+						</suite:toolbar>
+						<suite:content>
+							<suite:ChartContainerContent icon="sap-icon://bar-chart" title="Column Chart">
+								<suite:content>
+									<viz:VizFrame uiConfig="{applicationSet:'fiori'}" id="oVizFrame1" vizType="column" width="100%">
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{/sflight_chartSet}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Flightcode" value="{Flightcode}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Economy" value="{Economyoccupiedseats}"/>
+													<viz.data:MeasureDefinition name="Business" value="{Businessoccupiedseats}"/>
+													<viz.data:MeasureDefinition name="First" value="{Firstoccupiedseats}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Economy"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Business"/>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="First"/>
+											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Flightcode"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</suite:content>
+							</suite:ChartContainerContent>
+						</suite:content>
+					</suite:ChartContainer>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

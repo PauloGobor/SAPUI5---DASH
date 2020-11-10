@@ -1,0 +1,108 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:sl="sap.ui.comp.navpopover" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:suite="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:footerbar="sap.ushell.ui.footerbar" height="100%"
+	controllerName="DashVoos.ProjetVoosDash.controller.Voos">
+	<App>
+		<pages>
+			<Page title="Lista de Voos">
+				<content>
+					<IconTabBar selectedKey="__xmlview0--filter5" id="bar0">
+						<items>
+							<IconTabFilter text="Voos" id="filter44" icon="sap-icon://flight">
+								<content>
+									<Table noDataText="Drop column list items here and columns in the area above" id="table0" growing="true" growingThreshold="50"
+										growingScrollToLoad="false"
+										items="{path:'/sflightSet',sorter:[{path:'Flightcode',descending:false},{path:'Flightdate',descending:false},{path:'Planetype',descending:false}]}">
+										<items>
+											<ColumnListItem type="Active" id="item0" press="funcListItemPress">
+												<cells>
+													<Text id="text2" text="{Flightcode}"/>
+													<Text id="text3" text="{Planetype}"/>
+													<Text id="text4" text="{ path: 'Flightdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+													<Text xmlns="sap.m" id="text7" text="{Currency}"/>
+													<Text xmlns="sap.m" text="{Price}" id="prec"/></cells>
+											</ColumnListItem>
+										</items>
+										<columns>
+											<Column id="column0">
+												<header>
+													<Label text="Cod." id="label0"/>
+												</header>
+											</Column>
+											<Column id="column1">
+												<header>
+													<Label text="Tipo de Avião" id="label1"/>
+												</header>
+											</Column>
+											<Column id="column2">
+												<header>
+													<Label text="Data do Voo" id="data"/>
+												</header>
+											</Column>
+											<Column id="column3">
+												<header>
+													<Text text="Cod. Moeda" id="text5"/>
+												</header>
+											</Column>
+											<Column id="column4">
+												<header>
+													<Text text="Preço do voo" id="text6"/>
+												</header>
+											</Column>
+										</columns>
+										<headerToolbar>
+											<Toolbar width="100%" id="toolbar1">
+												<content>
+													<Text text="Pesquisar Cod: " id="text26"/>
+													<SearchField xmlns="sap.m" placeholder="Digite aqui ..." id="field0" width="35%" search="onFilter"/>
+												</content>
+											</Toolbar>
+										</headerToolbar>
+									</Table>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Analytics" id="filter5" icon="sap-icon://filter-analytics" iconColor="Critical">
+								<content>
+									<suite:ChartContainer id="idChartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="false" showLegend="true">
+										<suite:toolbar>
+											<OverflowToolbar id="appToolbar">
+												<suite:ChartContainerToolbarPlaceholder/>
+											</OverflowToolbar>
+										</suite:toolbar>
+										<suite:content>
+											<suite:ChartContainerContent icon="sap-icon://bar-chart" title="Column Chart">
+												<suite:content>
+													<viz:VizFrame uiConfig="{applicationSet:'fiori'}" id="oVizFrame1" vizType="column" width="100%">
+														<viz:dataset>
+															<viz.data:FlattenedDataset data="{/sflight_chartSet}">
+																<viz.data:dimensions>
+																	<viz.data:DimensionDefinition name="Flightcode" value="{Flightcode}"/>
+																</viz.data:dimensions>
+																<viz.data:measures>
+																	<viz.data:MeasureDefinition name="Economy" value="{Economyoccupiedseats}"/>
+																	<viz.data:MeasureDefinition name="Business" value="{Businessoccupiedseats}"/>
+																	<viz.data:MeasureDefinition name="First" value="{Firstoccupiedseats}"/>
+																</viz.data:measures>
+															</viz.data:FlattenedDataset>
+														</viz:dataset>
+														<viz:feeds>
+															<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Economy"/>
+															<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Business"/>
+															<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="First"/>
+															<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Flightcode"/>
+														</viz:feeds>
+													</viz:VizFrame>
+												</suite:content>
+											</suite:ChartContainerContent>
+										</suite:content>
+									</suite:ChartContainer>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
