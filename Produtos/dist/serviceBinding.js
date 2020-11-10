@@ -1,0 +1,1 @@
+function initModel(){var o="/Microsoft_OData/V2/Northwind/Northwind.svc/";var t=new sap.ui.model.odata.ODataModel(o,true);sap.ui.getCore().setModel(t)}
