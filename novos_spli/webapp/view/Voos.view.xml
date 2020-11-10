@@ -1,0 +1,43 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="novo_spfli.novos_spli.controller.Voos">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<Table noDataText="Drop column list items here and columns in the area above" id="table0" items="{path:'/FlightListSet',parameters:{expand:'HeadToDetailsNav'},sorter:[{path:'Carrid',descending:false},{path:'Connid',descending:false}]}">
+						<items>
+							<ColumnListItem type="Active" id="item0" press="funcListItemPress">
+								<cells>
+									<Text text="{Carrid}" id="text0"/>
+									<Text text="{Connid}" id="text1"/>
+									<Text text="{Fldate}" id="text2"/>
+									<Text xmlns="sap.m" text="{HeadToDetailsNav/Airpfrom}" id="text3"/></cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Header 1" id="carrid"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="Header 2" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Data" id="Data"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Text text="Tpo de Voo" id="planetype"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

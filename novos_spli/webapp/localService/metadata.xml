@@ -1,0 +1,45 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGW_FLI_03_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="FlightList" sap:content-version="1">
+				<Key><PropertyRef Name="Carrid"/><PropertyRef Name="Connid"/><PropertyRef Name="Fldate"/></Key><Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Companhia aérea" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Nº vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Planetype" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Tipo avião" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Seatsmax" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máxima cl.econ." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Seatsocc" Type="Edm.Int32" Nullable="false" sap:label="Ocup.cl.econ." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsmaxB" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máx.cl.execut." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsoccB" Type="Edm.Int32" Nullable="false" sap:label="Ocup.cl.execut." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsmaxF" Type="Edm.Int32" Nullable="false" sap:label="Ocup.máx.1ª classe" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SeatsoccF" Type="Edm.Int32" Nullable="false" sap:label="Ocup.1ª classe" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Economica" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ECONOMICA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Executiva" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="EXECUTIVA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Primeira" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="PRIMEIRA" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="HeadToDetailsNav" Relationship="ZGW_FLI_03_SRV.HeadToDetails" FromRole="FromRole_HeadToDetails"
+					ToRole="ToRole_HeadToDetails"/></EntityType>
+			<EntityType Name="DetailsFlight" sap:content-version="1">
+				<Key><PropertyRef Name="Carrid"/><PropertyRef Name="Connid"/><PropertyRef Name="Fldate"/></Key><Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Companhia aérea" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Nº vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data vôo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Cityfrom" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Cid.partida" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Cityto" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Cidade de chegada" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Airpto" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Aeroporto dest." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Airpfrom" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="AeroportPartida" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Countryfr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="País" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Countryto" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="País" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="HeadToDetails" sap:content-version="1"><End Type="ZGW_FLI_03_SRV.FlightList" Multiplicity="1" Role="FromRole_HeadToDetails"/><End Type="ZGW_FLI_03_SRV.DetailsFlight" Multiplicity="*" Role="ToRole_HeadToDetails"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_HeadToDetails"><PropertyRef Name="Fldate"/><PropertyRef Name="Connid"/><PropertyRef Name="Carrid"/></Principal>
+					<Dependent Role="ToRole_HeadToDetails"><PropertyRef Name="Fldate"/><PropertyRef Name="Connid"/><PropertyRef Name="Carrid"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGW_FLI_03_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="DetailsFlightSet" EntityType="ZGW_FLI_03_SRV.DetailsFlight" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="FlightListSet" EntityType="ZGW_FLI_03_SRV.FlightList" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="HeadToDetailsSet" Association="ZGW_FLI_03_SRV.HeadToDetails" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="FlightListSet" Role="FromRole_HeadToDetails"/><End EntitySet="DetailsFlightSet" Role="ToRole_HeadToDetails"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGW_FLI_03_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGW_FLI_03_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

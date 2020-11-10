@@ -1,0 +1,133 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "novo_spfli.novos_spli",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZGW_FLI_03_SRV": {
+				"uri": "/sap/opu/odata/sap/ZGW_FLI_03_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "novo_spfli.novos_spli.view.app",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "novo_spfli.novos_spli.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZGW_FLI_03_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "novo_spfli.novos_spli.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "Voos",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Voos"]
+			}, {
+				"name": "Detalhes",
+				"pattern": "detalhe/{carrid}{connid}{fldate}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Detalhes"]
+			}],
+			"targets": {
+				"Targetapp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "app",
+					"viewName": "app"
+				},
+				"Voos": {
+					"viewType": "XML",
+					"viewName": "Voos",
+					"controlId": "app",
+					"controlAggregation": "pages",
+					"viewPath": "novo_spfli.novos_spli.view"
+				},
+				"Detalhes": {
+					"viewType": "XML",
+					"viewName": "Detalhes",
+					"controlAggregation": "pages",
+					"controlId": "app",
+					"viewPath": "novo_spfli.novos_spli.view"
+				}
+			}
+		}
+	}
+}
