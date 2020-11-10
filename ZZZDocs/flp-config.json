@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "Docs.ZZZDocs.ZZZDocs",
+        "description": "Documentos",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#ZZZDocs-Display",
+        "navigationComponentName": "Docs.ZZZDocs",
+        "intentSemanticObject": "ZZZDocs",
+        "intentAction": "Display",
+        "html5ApplicationName": "docs",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "e2bb869d-a2c3-462a-8d1a-bfba5c4d79b2"
+        ],
+        "contentPackages": [
+            "b8907a73-0547-4660-93d7-5a07cf8c1911"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "App Docs",
+        "subtitle": "Documentos",
+        "searchKeywords": "App Docs,Documentos",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" height="100%"
+	controllerName="Docs.ZZZDocs.controller.Detalhes">
+	<App>
+		<pages>
+			<Page title="Detalhes De Material">
+				<content>
+					<ObjectHeader xmlns="sap.m" title="{DetailsMatNav/Matnr}"  id="header0"
+						icon="sap-icon://product">
+						<statuses>
+							<ObjectStatus text="Grupo: {DetailsMatNav/Matkl}" id="status0"/>
+							<ObjectStatus text="Tipo: {DetailsMatNav/Mtart}" id="status30"/>
+						</statuses>
+						
+						<attributes>
+							<ObjectAttribute text="Peso Total: {DetailsMatNav/Brgew} {DetailsMatNav/Gewei}" id="attribute0"/>
+							<ObjectAttribute text="Peso Liquido: {DetailsMatNav/Ntgew} {DetailsMatNav/Gewei}" id="attribute20"/>
+							<ObjectAttribute text="Volume: {DetailsMatNav/Volum} {DetailsMatNav/Voleh}" id="attribute220"/>
+						</attributes>
+					</ObjectHeader>
+					 <IconTabBar selectedKey="__filter1" id="bar0">
+				        <items>
+				            <IconTabFilter text="Fornecedor" icon="sap-icon://factory" iconColor="Negative" id="filter1">
+				            <content>
+				                <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="SFormFornecedor">
+				                    <sap.ui.layout.form:content>
+				                        <Label text="Empresa:" id="label12"/>
+				                        <Text xmlns="sap.m" text="{DetailsFornNav/Lifnr}" id="text2"/>
+				                        <Label text="Contato:" id="label13"/>
+				                        <Text xmlns="sap.m" text="{ContactName}" id="text3"/>
+				                        <Label text="Caixa Postal:" id="label14"/>
+				                        <Text xmlns="sap.m" text="{DetailsFornNav/Pstlz}" id="text4"/>
+				                        <Label text="Endereço:" id="label15"/>
+				                        <Text xmlns="sap.m" text="{DetailsFornNav/Stras} N°{DetailsFornNav/Adrnr}" id="text5"/>
+				                        <Label text="Cidade:" id="label16"/>
+				                        <Text xmlns="sap.m" text="{DetailsFornNav/Ort01}/{DetailsFornNav/Regio}" id="text6"/>
+				                    </sap.ui.layout.form:content>
+				                </sap.ui.layout.form:SimpleForm>
+				            </content>
+				            </IconTabFilter>
+				            <IconTabFilter text="Vendas" icon="sap-icon://sales-order-item" iconColor="Critical" id="filter2" count="cont">
+				                <content>
+				                   
+				                </content>
+				            </IconTabFilter></items>
+				    </IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
